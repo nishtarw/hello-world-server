@@ -1,17 +1,7 @@
-const http = require('http');
+var http = require("http");
+const port = process.env.PORT || 3001;
 
-// Use environment variable for port or default to 3000
-const port = process.env.PORT || 3000;
-
-// Listen on all network interfaces (0.0.0.0)
-const hostname = '0.0.0.0';
-
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, World!\n');
-});
-
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+http.createServer(function (req, res) {
+    res.writeHead(200, { "Content-Type": "text/html" }); // Corrected Content-Type
+    res.end("Hello World!");
+}).listen(port);
